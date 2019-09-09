@@ -10,8 +10,8 @@ typedef enum{
 } bool;
 
 int queue[QUEUE_SIZE];
-int front = -1;
-int rear = -1;
+int front = QUEUE_SIZE - 1;
+int rear = QUEUE_SIZE - 1;
 bool full = false;
 bool enqueue(int);
 bool dequeue(int*);
@@ -64,7 +64,7 @@ bool enqueue(int value) {
 		if (++rear == QUEUE_SIZE)
 			rear = 0;
 		queue[rear] = value;
-		if (front == rear || (rear - front) == QUEUE_SIZE)
+		if (front == rear)
 			full = true;
 		return true;
 	}
